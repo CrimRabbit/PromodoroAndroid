@@ -58,6 +58,8 @@ public class timer extends AppCompatActivity {
     private int FIVE_SECONDS = 5000;
     final Handler handler = new Handler();
     boolean answer;
+    String current_State;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,12 +77,15 @@ public class timer extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                //Do something after 20 seconds
-
+                //Do something after 5 seconds
+                current_State = sharedPref.getString(getString(R.string.currentState),"");
                 boolean tobegin = requestState();
 //                Toast.makeText(getApplicationContext(),tobegin+"",Toast.LENGTH_SHORT).show();
                 if(tobegin){
                     start2();
+                }
+                if(!current_State.equals("Working")){
+                    workingt.cancel();
                 }
                 handler.postDelayed(this,FIVE_SECONDS);
             }
@@ -264,9 +269,17 @@ public class timer extends AppCompatActivity {
 
     public boolean checkState(final JSONObject response){
         try {
+            SharedPreferences.Editor editor = sharedPref.edit();
             String state = response.getString("state");
+            editor.putString(getString(R.string.currentState),state);
 //            Toast.makeText(getApplicationContext(),state,Toast.LENGTH_SHORT).show();
             if(state.equals("Working")&&response.getBoolean("is_current_state")){
+                String startTime = response.getString("created_at");
+                String updateTime = response.getString("updated_at");
+                editor.putString(getString(R.string.startTime),startTime);
+                editor.putString(getString(R.string.updateTime),updateTime);
+                editor.commit();
+
                 answer = true;
 //                Toast.makeText(getApplicationContext(),answer+"",Toast.LENGTH_SHORT).show();
             }

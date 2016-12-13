@@ -17,6 +17,9 @@
     <string name="settingsKeepScreenOnTextView">Keep Screen On</string>
     <string name="settingsCurrentUserTextView">Current User</string>
     <string name="settingsClearHistoryTextView">Clear History</string>
+    <string name="startTime">0</string>
+    <string name="updateTime">0</string>
+    <string name="currentState">Working</string>
     <string-array name="settingsList">
         <item>Duration of Promodoro</item>
         <item>Duration of Rest</item>

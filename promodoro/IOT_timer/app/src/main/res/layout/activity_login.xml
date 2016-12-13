@@ -1,0 +1,147 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#80D8FF"
+    tools:context="com.example.ruochenzhang.iot_timer.Login">
+
+    <!-- Login progress -->
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/login_logo"
+                android:text="Focus"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:fontFamily="monospace"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="100dp"
+                android:textColor="#fff"/>
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/logo_white"
+                android:id="@+id/eyebrow"
+                android:adjustViewBounds="true"
+                android:layout_marginTop="40dp"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/login_nameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_logo"
+                android:layout_centerHorizontal="true">
+
+                <AutoCompleteTextView
+                    android:id="@+id/login_name"
+                    android:textColor="#01579B"
+                    android:backgroundTint="#fff"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_name"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/login_dataLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/login_nameLayout"
+                android:layout_marginTop="10dp"
+                android:layout_alignStart="@id/login_nameLayout"
+                android:visibility="gone">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:id="@+id/login_age"
+                    android:textColor="#01579B"
+                    android:backgroundTint="#fff"
+                    android:hint="@string/prompt_age"/>
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="5dp"
+                    android:id="@+id/login_genderSpinner"
+                    >
+                </Spinner>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#FFFFFF" />
+                <!--<EditText-->
+                    <!--android:id="@+id/login_password"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:fontFamily="casual"-->
+                    <!--android:hint="@string/prompt_password"-->
+                    <!--android:imeActionId="@+id/login"-->
+                    <!--android:imeActionLabel="@string/action_sign_in_short"-->
+                    <!--android:imeOptions="actionUnspecified"-->
+                    <!--android:inputType="textPassword"-->
+                    <!--android:maxLines="1"-->
+                    <!--android:singleLine="true" />-->
+
+            </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:id="@+id/login_loginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:layout_marginTop="28dp"
+                android:layout_below="@id/login_dataLayout"
+                android:layout_alignStart="@id/login_dataLayout"
+                android:text="@string/action_sign_in" />
+                <!--style="?android:textAppearanceSmall"
+                android:textStyle="bold"-->
+
+            <Button
+                android:id="@+id/login_bioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:layout_marginTop="28dp"
+                android:layout_below="@id/login_dataLayout"
+                android:layout_alignStart="@id/login_dataLayout"
+                android:text="@string/action_confirm_bio"
+                android:visibility="gone"/>
+
+
+        </RelativeLayout>
+    </ScrollView>
+</LinearLayout>

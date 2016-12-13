@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80D8FF"
+    tools:context="com.example.ruochenzhang.iot_timer.summary">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Here is your daily summary"
+    android:textColor="@color/white"
+    android:textSize="20dp"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/period"
+    android:layout_marginTop="70dp"/>
+
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/piechart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="42dp" />
+
+
+
+</RelativeLayout>

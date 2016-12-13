@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Focus</string>
+    <string name="preference_file_key">tomatoKey</string>
+    <string name="prefsUserName">prefsUserName</string>
+    <string name="prefsUserAge">prefsUserAge</string>
+    <string name="prefsUserGender">prefsUserGender</string>
+    <string name="prefsUserId">prefsUserId</string>
+    <string name="settingsShowScreen">1</string>
+    <string name="settingsMute">0</string>
+    <string name="settingsNotifications">0</string>
+    <string name="settingsPromodoroDuration">25</string>
+    <string name="settingsRestDuration">5</string>
+    <string name="settingsDurationTextView">Duration of Promodoro</string>
+    <string name="settingsRestTextView">Duration of Rest</string>
+    <string name="settingsNotificationTextView">Notifications</string>
+    <string name="settingsTimerSoundsTextView">Play sounds when timer hits 0</string>
+    <string name="settingsKeepScreenOnTextView">Keep Screen On</string>
+    <string name="settingsCurrentUserTextView">Current User</string>
+    <string name="settingsClearHistoryTextView">Clear History</string>
+    <string-array name="settingsList">
+        <item>Duration of Promodoro</item>
+        <item>Duration of Rest</item>
+        <item>Notifications</item>
+        <item>Play Sound when timer hits 0</item>
+        <item>Keep Screen On</item>
+        <item>Clear History</item>
+        <item>Current User</item>
+    </string-array>
+    <string-array name="promodoroDuration">
+        <item>15 Minutes</item>
+        <item>20 Minutes</item>
+        <item>25 Mintues</item>
+        <item>30 Minutes</item>
+        <item>45 Minutes</item>
+        <item>60 Minutes</item>
+    </string-array>
+    <string-array name="restDuration">
+        <item>3 Minutes</item>
+        <item>5 Minutes</item>
+        <item>8 Mintues</item>
+        <item>10 Minutes</item>
+    </string-array>
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+        <item>Others</item>
+    </string-array>
+    <string name="title_activity_login">Focus</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_name">Name</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This username is in use</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="prompt_gender">Gender</string>
+    <string name="prompt_age">Age</string>
+    <string name="action_confirm_bio">Confirm Bio</string>
+    <string name="error_invalid_age">This number is invalid</string>
+
+    <string name="title_activity_summary">summary</string>
+</resources>

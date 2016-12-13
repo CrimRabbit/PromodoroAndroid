@@ -251,7 +251,7 @@ public class Settings extends ListActivity {
                                 List<String> myOptions2 = Arrays.asList((getResources().getStringArray(R.array.restDuration)));
                                 set =  myOptions2.indexOf(restTimingSelected+" Minutes");
 //                                set = sharedPref.getInt(getString(R.string.settingsRestDuration),1);
-//                                set = sharedPref.getInt("restDuration",5);
+//                               set = sharedPref.getInt("restDuration",5);
                                 holder.spinspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                     @Override
                                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

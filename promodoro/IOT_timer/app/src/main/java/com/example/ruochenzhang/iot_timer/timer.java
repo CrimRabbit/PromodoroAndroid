@@ -78,15 +78,16 @@ public class timer extends AppCompatActivity {
             @Override
             public void run() {
                 //Do something after 5 seconds
-                current_State = sharedPref.getString(getString(R.string.currentState),"");
                 boolean tobegin = requestState();
+                current_State = sharedPref.getString(getString(R.string.currentState),"");
 //                Toast.makeText(getApplicationContext(),tobegin+"",Toast.LENGTH_SHORT).show();
                 if(tobegin){
                     start2();
+                    if(!current_State.equals("Working")){
+                        workingt.cancel();
+                    }
                 }
-                if(!current_State.equals("Working")){
-                    workingt.cancel();
-                }
+
                 handler.postDelayed(this,FIVE_SECONDS);
             }
         }, FIVE_SECONDS);

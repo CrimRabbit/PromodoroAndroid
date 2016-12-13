@@ -5,9 +5,10 @@
     <string name="prefsUserAge">prefsUserAge</string>
     <string name="prefsUserGender">prefsUserGender</string>
     <string name="prefsUserId">prefsUserId</string>
-    <string name="settingsShowScreen">1</string>
-    <string name="settingsMute">0</string>
-    <string name="settingsNotifications">0</string>
+    <string name="settingsShowScreen">showscreen</string>
+    <string name="settingsMute">mute</string>
+    <string name="settingsZero">zero</string>
+    <string name="settingsNotifications">noti</string>
     <string name="settingsPromodoroDuration">25</string>
     <string name="settingsRestDuration">5</string>
     <string name="settingsDurationTextView">Duration of Promodoro</string>
@@ -17,9 +18,9 @@
     <string name="settingsKeepScreenOnTextView">Keep Screen On</string>
     <string name="settingsCurrentUserTextView">Current User</string>
     <string name="settingsClearHistoryTextView">Clear History</string>
-    <string name="startTime">0</string>
-    <string name="updateTime">0</string>
-    <string name="currentState">Working</string>
+    <string name="startTime">startTime</string>
+    <string name="updateTime">updateTime</string>
+    <string name="currentState">currentState</string>
     <string-array name="settingsList">
         <item>Duration of Promodoro</item>
         <item>Duration of Rest</item>

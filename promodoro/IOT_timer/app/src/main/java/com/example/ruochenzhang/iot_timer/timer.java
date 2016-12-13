@@ -57,31 +57,34 @@ public class timer extends AppCompatActivity {
     RequestQueue queue =null;
     private int FIVE_SECONDS = 5000;
     final Handler handler = new Handler();
+    boolean answer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         //get durations from settings
-//        sharedPref = this.getSharedPreferences(getString(R.string.preference_file_key), Context.MODE_PRIVATE);
         sharedPref = this.getSharedPreferences(getString(R.string.preference_file_key),Context.MODE_PRIVATE);
+
         queue = Volley.newRequestQueue(this);
 //        setRestingtime(sharedPref.getInt("restDuration",5));
 //        setWorkingTime(sharedPref.getInt("promodoroDuration",25));
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
-
         // TODO: 13/12/16  get status from server every five second, if request state is true, start timer
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                //Do something after 20 seconds
-//                if(requestState()==true){
-//                    start();
-//                }
-//                handler.postDelayed(this,FIVE_SECONDS );
-//            }
-//        }, FIVE_SECONDS);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //Do something after 20 seconds
+
+                boolean tobegin = requestState();
+//                Toast.makeText(getApplicationContext(),tobegin+"",Toast.LENGTH_SHORT).show();
+                if(tobegin){
+                    start2();
+                }
+                handler.postDelayed(this,FIVE_SECONDS);
+            }
+        }, FIVE_SECONDS);
 
 
         dropDownMenuIconItem = (LinearLayout) findViewById(R.id.vertical_dropdown_icon_menu_items);
@@ -160,6 +163,34 @@ public class timer extends AppCompatActivity {
 
     }
 
+    public void start2(){
+        start_count++;
+        if (start_count==1){
+            setWorkingTime(sharedPref.getInt("promodoroDuration",25));
+            workingt = new CountDownTimer(workingtime, 1000) {
+                public void onTick(long millisUntilFinished) {
+                    long remainedSecs = millisUntilFinished / 1000;
+                    if(String.valueOf(remainedSecs%60).length()==1){
+                        timer.setText((remainedSecs / 60) + ":" + "0"+ (remainedSecs % 60));// manage it accordign to you
+                    }else {
+                        timer.setText((remainedSecs / 60) + ":" + (remainedSecs % 60));
+                    }
+                }
+                public void onFinish() {
+                    timer.setText("0:00");
+                    workingt.cancel();
+                    start_count=0;
+//                restingt.start();
+//                totalworkingtime_day+=workingtime/60/1000;
+
+                    //notify the user when time is up
+                    mgr.notify(NOTIFY_ID, mBuilder.build());
+                }
+            };
+            workingt.start();}
+
+    }
+
     public void stop(View v){
         workingt.cancel();
 //        restingt.cancel();
@@ -203,46 +234,46 @@ public class timer extends AppCompatActivity {
 
 
     // TODO: 13/12/16 requesting current state of the totem, if it's in coding state, start the timer
-//    public void requestState() {
-//        int userId = sharedPref.getInt(getString(R.string.prefsUserId),0);
-//        String newURL = APIUrl + "totemdatum/latest_state?id=" + userId;
-//        getRequest = new JsonObjectRequest(Request.Method.GET, newURL, null,
-//                new Response.Listener<JSONObject>() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        // display response
-//                        //Toast.makeText(getApplication().getBaseContext(), response.get("age").toString(),Toast.LENGTH_SHORT).show();
-//                        Log.d("Response", response.toString());
-//                        mAuthTask = null;
-////                        checkState(response);
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Log.d("Error.Response", error.toString());
-////                        checkState(null);
-//                    }
-//                }
-//        );
-//        queue.add(getRequest);
-//    }
+    public boolean requestState() {
+        int userId = sharedPref.getInt(getString(R.string.prefsUserId),0);
+        String newURL = APIUrl + "totemdatum/latest_state?id=" + userId;
+        getRequest = new JsonObjectRequest(Request.Method.GET, newURL, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // display response
+                        //Toast.makeText(getApplication().getBaseContext(), response.get("age").toString(),Toast.LENGTH_SHORT).show();
+                        Log.d("Response", response.toString());
+                        mAuthTask = null;
+                        checkState(response);
+//                        Toast.makeText(getApplicationContext(),answer+"",Toast.LENGTH_SHORT).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("Error.Response", error.toString());
+                        checkState(null);
+                    }
+                }
+        );
+        queue.add(getRequest);
+        return answer;
 
-//    public boolean checkState(final JSONObject response){
-//        try {
-//            Toast.makeText(getApplication().getBaseContext(), response.get("age").toString(),Toast.LENGTH_SHORT).show();
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        boolean answer = false;
-//        try {
-//            String state = response.getString("CurrentState");
-//            if(state.equals("coding")){
-//                answer = true;
-//            }
-//            return answer;
-//        }catch (Exception e){
-//            return answer;
-//        }
-//    }
+    }
+
+    public boolean checkState(final JSONObject response){
+        try {
+            String state = response.getString("state");
+//            Toast.makeText(getApplicationContext(),state,Toast.LENGTH_SHORT).show();
+            if(state.equals("Working")&&response.getBoolean("is_current_state")){
+                answer = true;
+//                Toast.makeText(getApplicationContext(),answer+"",Toast.LENGTH_SHORT).show();
+            }
+            return answer;
+        }catch (Exception e){
+//            Toast.makeText(getApplicationContext(),"nothing",Toast.LENGTH_SHORT).show();
+            return answer;
+        }
+    }
 }

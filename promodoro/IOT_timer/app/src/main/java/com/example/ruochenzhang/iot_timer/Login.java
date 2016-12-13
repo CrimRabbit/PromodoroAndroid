@@ -171,7 +171,7 @@ public class Login extends AppCompatActivity implements LoaderCallbacks<Cursor> 
             //new or misinformed person, getting more data.
             if(dataLay.getVisibility() == View.VISIBLE){
                 String newURL = APIUrl + "person";
-                Person reqPerson = new Person(Integer.parseInt(age),email,gender.charAt(0),"0");
+                Person reqPerson = new Person(Integer.parseInt(age),email,gender.charAt(0));
                 if(personId != -1){
                     //not a new person
                     reqPerson.setId(personId);

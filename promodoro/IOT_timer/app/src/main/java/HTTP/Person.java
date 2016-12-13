@@ -17,22 +17,19 @@ public class Person {
     private int id, age;
     private String name;
     private char gender;
-    private String ip_addr;
 
-    public Person(int id, int age, String name, char gender, String ip_addr) {
+    public Person(int id, int age, String name, char gender) {
         this.id = id;
         this.age = age;
         this.name = name;
         this.gender = gender;
-        this.ip_addr = ip_addr;
     }
 
-    public Person( int age, String name, char gender, String ip_addr) {
+    public Person( int age, String name, char gender) {
         this.id = id;
         this.age = age;
         this.name = name;
         this.gender = gender;
-        this.ip_addr = ip_addr;
     }
 
 
@@ -48,7 +45,6 @@ public class Person {
         this.age = Integer.parseInt(personData.get("age"));
         this.gender = personData.get("gender").charAt(0);
         this.id = Integer.parseInt(personData.get("id"));
-        this.ip_addr = personData.get("ip_addr");
     }
 
 
@@ -68,10 +64,6 @@ public class Person {
         return gender;
     }
 
-    public String getIp_addr() {
-        return ip_addr;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -88,17 +80,12 @@ public class Person {
         this.gender = gender;
     }
 
-    public void setIp_addr(String ip_addr) {
-        this.ip_addr = ip_addr;
-    }
-
     public HashMap<String,String> toHashMap(){
         HashMap<String,String> personHash = new HashMap<String, String>();
         personHash.put("id",Integer.toString(this.id));
         personHash.put("name",this.name);
         personHash.put("age",Integer.toString(this.age));
         personHash.put("gender",Character.toString(this.gender));
-        personHash.put("ip_addr",this.getIp_addr());
         return personHash;
     }
 
